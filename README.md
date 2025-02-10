@@ -22,17 +22,41 @@ Mit TrafficSign wird die digitale Verkehrssteuerung intelligenter, effizienter u
 * Kubernetes 1.23+
 * Helm 3.8.0+
 
-### Helm Install 
-
 ## Installation
 
-TBD
+```bash
+$ cd trafficsign
+$ helm install <my-release> helm --values <values file> -n <namespace>
+```
+
+alternativ:
+
+```bash
+$ helm upgrade --install <my-release> helm --values <values file> -n <namespace>
+```
+
+Beispiel:
+
+```bash
+$ helm upgrade --install my-release helm -n my-namespace --create-namespace --values <values file>
+```
 
 ## Parameter
 Die wichtigen Parameter werden im values.yaml konfiguriert.
 
+| Name                    | Description                                     | Value  |
+|:------------------------|:------------------------------------------------|:-------|
+| env.port                | Service port                                    | 8088   |
+| env.debugLevel          | Debug level                                     | info   |
+| env.orionUrl            | Address of an ngsi-ld context broker            | http://localhost |
+| env.tenant              | Tenant to use                                   | anonymous |
+| env.quantumleapUrl      |                                                 | http://quantumleap.quantumleap.local:8000/v2/notify |
 
-## Enviroment Variablen
+## Upgrading the chart
+
+```bash
+$ helm upgrade <my-release> helm --values <values file> -n <namespace>
+```
 
 ## License
 
